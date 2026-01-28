@@ -54,7 +54,7 @@ public class LagFixer extends JavaPlugin {
             it.remove();
         }
         SupportManager.getInstance().getMonitor().stop();
-        Bukkit.getScheduler().cancelTasks(this);
+        SupportManager.getInstance().getFork().cancelAllTasks();
         HandlerList.unregisterAll(this);
     }
 

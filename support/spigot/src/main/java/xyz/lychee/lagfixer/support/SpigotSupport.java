@@ -116,4 +116,9 @@ public class SpigotSupport extends AbstractFork {
             return Bukkit.getScheduler().runTaskTimer(this.getPlugin(), run, unit.toMillis(initialDelay) / 50, unit.toMillis(delay) / 50);
         }
     }
+
+    @Override
+    public void cancelAllTasks() {
+        Bukkit.getScheduler().cancelTasks(getPlugin());
+    }
 }

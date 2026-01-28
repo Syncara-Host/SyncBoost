@@ -34,7 +34,7 @@
 | :--- | :--- |
 | **Java** | 21 or newer (**Required**) |
 | **Minecraft** | 1.20.5 - 1.21.4+ |
-| **Server Software** | Spigot, Paper, Purpur, Pufferfish, or compatible forks |
+| **Server Software** | Spigot, Paper, Purpur, Pufferfish, Folia, or compatible forks |
 
 ---
 
@@ -157,7 +157,7 @@ We explicitly acknowledge and thank **[Jenya705](https://github.com/Jenya705)** 
 
 <details>
 <summary><b>Is SyncBoost compatible with Folia?</b></summary>
-<p>Currently, SyncBoost is designed for single-threaded server software (Spigot, Paper, Purpur). Folia support is not available yet.</p>
+<p>Yes! SyncBoost fully supports Folia's regionized multithreading. All optimization modules are compatible with Folia's architecture.</p>
 </details>
 
 ---

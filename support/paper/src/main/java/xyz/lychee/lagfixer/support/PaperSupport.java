@@ -40,7 +40,12 @@ public class PaperSupport extends AbstractFork {
 
     @Override
     public double getMspt() {
-        return Bukkit.getAverageTickTime();
+        try {
+            return Bukkit.getAverageTickTime();
+        } catch (UnsupportedOperationException e) {
+            // Folia throws this when not on a region thread
+            return 0;
+        }
     }
 
     @Override
@@ -118,6 +123,12 @@ public class PaperSupport extends AbstractFork {
         return new FoliaTask(this.getPlugin(), async ?
                 Bukkit.getAsyncScheduler().runAtFixedRate(this.getPlugin(), (s) -> run.run(), initialDelay, delay, unit) :
                 Bukkit.getGlobalRegionScheduler().runAtFixedRate(this.getPlugin(), (s) -> run.run(), unit.toMillis(initialDelay) / 50, unit.toMillis(delay) / 50));
+    }
+
+    @Override
+    public void cancelAllTasks() {
+        Bukkit.getAsyncScheduler().cancelTasks(getPlugin());
+        Bukkit.getGlobalRegionScheduler().cancelTasks(getPlugin());
     }
 
     public static class FoliaTask implements BukkitTask {

@@ -46,5 +46,8 @@ public abstract class AbstractFork {
 
     public abstract BukkitTask runTimer(boolean async, Runnable runnable, long initialDelay, long delay, TimeUnit var7);
 
+    public abstract void cancelAllTasks();
+
 }
+
 
