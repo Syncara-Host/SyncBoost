@@ -9,7 +9,7 @@ val sonatypeRepo = "https://oss.sonatype.org/content/groups/public/";
 val jitpack = "https://jitpack.io"
 val mojang = "https://libraries.minecraft.net";
 
-version = "1.5.0-FoliaReady"
+version = "1.2.0"
 extra["syncboost_version"] = version
 extra["syncboost_build"] = "2"
 
