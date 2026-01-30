@@ -2,7 +2,7 @@
   <img src="brand/logo-512.png" width="180" alt="SyncBoost Logo">
   <h1>SyncBoost</h1>
   <p>
-    <b>Optimize Your Server, Stop Lag, Boost Performance, In The Most Simple Way.</b>
+    <b>The simplest way to boost server performance and eliminate lag.</b>
   </p>
   <p>
     <a href="https://modrinth.com/plugin/syncboost"><img src="https://img.shields.io/badge/Download-Modrinth-00AF5C?style=for-the-badge&logo=modrinth" alt="Modrinth"></a>
