@@ -30,6 +30,7 @@ public class LagFixer extends JavaPlugin {
         this.loadManager(new ErrorsManager(this));
         this.loadManager(new ConfigManager(this));
         this.loadManager(new SupportManager(this));
+        this.loadManager(new AnimationManager(this));
         this.loadManager(new HookManager(this));
         this.loadManager(new MetricsManager(this));
         this.loadManager(new UpdaterManager(this));

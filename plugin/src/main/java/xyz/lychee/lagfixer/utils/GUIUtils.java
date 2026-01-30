@@ -251,4 +251,193 @@ public class GUIUtils {
         if (tps >= 10.0) return Material.RED_STAINED_GLASS_PANE;
         return Material.BLACK_STAINED_GLASS_PANE;
     }
+    
+    // ==================== GLASSMORPHISM & ADVANCED VISUALS ====================
+    
+    /**
+     * Get glassmorphism background material based on color
+     * @param color Desired color
+     * @param dark Whether to use dark variant
+     * @return Stained glass pane material
+     */
+    public static Material getGlassMaterial(ChatColor color, boolean dark) {
+        return switch (color) {
+            case GREEN, DARK_GREEN -> dark ? Material.GREEN_STAINED_GLASS_PANE : Material.LIME_STAINED_GLASS_PANE;
+            case YELLOW, GOLD -> dark ? Material.ORANGE_STAINED_GLASS_PANE : Material.YELLOW_STAINED_GLASS_PANE;
+            case RED, DARK_RED -> dark ? Material.RED_STAINED_GLASS_PANE : Material.PINK_STAINED_GLASS_PANE;
+            case AQUA, DARK_AQUA -> dark ? Material.CYAN_STAINED_GLASS_PANE : Material.LIGHT_BLUE_STAINED_GLASS_PANE;
+            case BLUE, DARK_BLUE -> dark ? Material.BLUE_STAINED_GLASS_PANE : Material.LIGHT_BLUE_STAINED_GLASS_PANE;
+            case LIGHT_PURPLE, DARK_PURPLE -> dark ? Material.PURPLE_STAINED_GLASS_PANE : Material.MAGENTA_STAINED_GLASS_PANE;
+            case WHITE -> Material.WHITE_STAINED_GLASS_PANE;
+            case GRAY, DARK_GRAY -> dark ? Material.GRAY_STAINED_GLASS_PANE : Material.LIGHT_GRAY_STAINED_GLASS_PANE;
+            default -> Material.BLACK_STAINED_GLASS_PANE;
+        };
+    }
+    
+    /**
+     * Get health-based color palette
+     * @param tps Current TPS
+     * @return Array of materials representing health palette
+     */
+    public static Material[] getHealthPalette(double tps) {
+        if (tps >= 19.0) {
+            return new Material[]{
+                Material.LIME_STAINED_GLASS_PANE,
+                Material.GREEN_STAINED_GLASS_PANE,
+                Material.LIME_STAINED_GLASS_PANE
+            };
+        } else if (tps >= 17.0) {
+            return new Material[]{
+                Material.YELLOW_STAINED_GLASS_PANE,
+                Material.LIME_STAINED_GLASS_PANE,
+                Material.YELLOW_STAINED_GLASS_PANE
+            };
+        } else if (tps >= 15.0) {
+            return new Material[]{
+                Material.ORANGE_STAINED_GLASS_PANE,
+                Material.YELLOW_STAINED_GLASS_PANE,
+                Material.ORANGE_STAINED_GLASS_PANE
+            };
+        } else {
+            return new Material[]{
+                Material.RED_STAINED_GLASS_PANE,
+                Material.ORANGE_STAINED_GLASS_PANE,
+                Material.RED_STAINED_GLASS_PANE
+            };
+        }
+    }
+    
+    /**
+     * Create gradient text effect
+     * @param text Text to apply gradient to
+     * @param start Starting color
+     * @param end Ending color
+     * @return Gradient colored text
+     */
+    public static String createGradientText(String text, ChatColor start, ChatColor end) {
+        if (text == null || text.isEmpty()) return "";
+        
+        ChatColor[] gradient = getGradient(start, end, text.length());
+        StringBuilder result = new StringBuilder();
+        
+        for (int i = 0; i < text.length(); i++) {
+            result.append(gradient[Math.min(i, gradient.length - 1)])
+                  .append(text.charAt(i));
+        }
+        
+        return result.toString();
+    }
+    
+    /**
+     * Get color gradient
+     * @param start Starting color
+     * @param end Ending color
+     * @param steps Number of steps
+     * @return Array of colors forming gradient
+     */
+    public static ChatColor[] getGradient(ChatColor start, ChatColor end, int steps) {
+        if (steps <= 1) return new ChatColor[]{start};
+        
+        // Simplified gradient - alternates between start and end
+        // For true RGB gradients, would need RGB calculation
+        ChatColor[] gradient = new ChatColor[steps];
+        for (int i = 0; i < steps; i++) {
+            float ratio = (float) i / (steps - 1);
+            gradient[i] = ratio < 0.5f ? start : end;
+        }
+        return gradient;
+    }
+    
+    /**
+     * Create glowing text effect
+     * @param text Text to make glow
+     * @param intensity Glow intensity (0-10)
+     * @return Glowing text
+     */
+    public static String createGlowingText(String text, int intensity) {
+        ChatColor glowColor = switch (intensity) {
+            case 0, 1, 2 -> ChatColor.DARK_GRAY;
+            case 3, 4 -> ChatColor.GRAY;
+            case 5, 6 -> ChatColor.WHITE;
+            case 7, 8 -> ChatColor.YELLOW;
+            default -> ChatColor.GOLD;
+        };
+        return glowColor + "§l" + text;
+    }
+    
+    /**
+     * Get border decoration materials (for animated borders)
+     * @param style Border style
+     * @return Array of materials for border
+     */
+    public static Material[] getBorderMaterials(String style) {
+        return switch (style.toLowerCase()) {
+            case "rainbow" -> new Material[]{
+                Material.RED_STAINED_GLASS_PANE,
+                Material.ORANGE_STAINED_GLASS_PANE,
+                Material.YELLOW_STAINED_GLASS_PANE,
+                Material.LIME_STAINED_GLASS_PANE,
+                Material.CYAN_STAINED_GLASS_PANE,
+                Material.BLUE_STAINED_GLASS_PANE,
+                Material.PURPLE_STAINED_GLASS_PANE,
+                Material.MAGENTA_STAINED_GLASS_PANE
+            };
+            case "ocean" -> new Material[]{
+                Material.CYAN_STAINED_GLASS_PANE,
+                Material.LIGHT_BLUE_STAINED_GLASS_PANE,
+                Material.BLUE_STAINED_GLASS_PANE
+            };
+            case "fire" -> new Material[]{
+                Material.YELLOW_STAINED_GLASS_PANE,
+                Material.ORANGE_STAINED_GLASS_PANE,
+                Material.RED_STAINED_GLASS_PANE
+            };
+            case "nature" -> new Material[]{
+                Material.LIME_STAINED_GLASS_PANE,
+                Material.GREEN_STAINED_GLASS_PANE
+            };
+            default -> new Material[]{Material.BLUE_STAINED_GLASS_PANE};
+        };
+    }
+    
+    /**
+     * Get visual tier indicator
+     * @param tier Tier level (1-5)
+     * @return Tier indicator string
+     */
+    public static String getTierIndicator(int tier) {
+        String star = "★";
+        String emptyStar = "☆";
+        StringBuilder result = new StringBuilder(ChatColor.GOLD.toString());
+        
+        for (int i = 0; i < 5; i++) {
+            result.append(i < tier ? star : emptyStar);
+        }
+        
+        return result.toString();
+    }
+    
+    /**
+     * Create activity indicator
+     * @param active Whether currently active
+     * @return Activity indicator
+     */
+    public static String getActivityIndicator(boolean active) {
+        return active ? ChatColor.GREEN + "⚡" + ChatColor.AQUA + " ACTIVE" : 
+                       ChatColor.GRAY + "○ " + ChatColor.DARK_GRAY + "Idle";
+    }
+    
+    /**
+     * Format large numbers with K/M suffixes
+     * @param value Number to format
+     * @return Formatted string
+     */
+    public static String formatLargeNumber(long value) {
+        if (value >= 1_000_000) {
+            return formatNumber(value / 1_000_000.0) + "M";
+        } else if (value >= 1_000) {
+            return formatNumber(value / 1_000.0) + "K";
+        }
+        return String.valueOf(value);
+    }
 }
