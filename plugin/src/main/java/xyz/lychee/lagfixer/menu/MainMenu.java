@@ -58,11 +58,8 @@ public class MainMenu extends AbstractMenu {
         // Modules Card - Top Right
         this.getInv().setItem(15, modulesCard.build());
         
-        // World Info - Bottom Left
-        this.getInv().setItem(29, worldCard.build());
-        
-        // Quick Actions - Bottom Right  
-        this.getInv().setItem(33, quickActionsCard.build());
+        // Note: World Info and Quick Actions removed due to 27-slot inventory limitation
+        // These features will be accessible through sub-menus in future update
         
         // Decorative glassmorphism panels
         this.fillGlassmorphism();
@@ -206,8 +203,7 @@ public class MainMenu extends AbstractMenu {
         // Update card positions
         this.getInv().setItem(11, performanceCard.build());
         this.getInv().setItem(15, modulesCard.build());
-        this.getInv().setItem(29, worldCard.build());
-        this.getInv().setItem(33, quickActionsCard.build());
+        // World and quick actions cards removed for 27-slot inventory compatibility
     }
     
     private void updateAnimatedBorder(int tick) {
@@ -266,13 +262,8 @@ public class MainMenu extends AbstractMenu {
         } else if (slot == 15) {
             // Modules Card - Open Modules Menu
             human.openInventory(MenuCommand.getInstance().getModulesMenu().getInv());
-        } else if (slot == 29) {
-            // World Card - Coming soon
-            MessageUtils.sendMessage(true, human, "§e§lWorld management coming soon!");
-        } else if (slot == 33) {
-            // Quick Actions - Coming soon
-            MessageUtils.sendMessage(true, human, "§e§lQuick actions coming soon!");
         }
+        // World Info and Quick Actions cards removed for 27-slot compatibility
     }
 
     @Override
