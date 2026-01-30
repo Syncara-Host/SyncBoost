@@ -1,0 +1,11 @@
+blank_issues_enabled: false
+contact_links:
+  - name: 💬 Discord Support
+    url: https://syncara.host/discord
+    about: Join our Discord server for quick questions and community support
+  - name: 📖 Documentation
+    url: https://github.com/Syncara-Host/SyncBoost/blob/main/README.md
+    about: Check the README for installation, configuration, and module documentation
+  - name: 📊 Plugin Page
+    url: https://modrinth.com/plugin/syncboost
+    about: Download the latest version from Modrinth

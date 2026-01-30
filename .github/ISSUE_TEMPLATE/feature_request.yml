@@ -1,0 +1,109 @@
+name: ✨ Feature Request
+description: Suggest a new feature or enhancement for SyncBoost
+title: "[Feature] "
+labels: ["enhancement", "needs-review"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for suggesting a feature! Please provide as much detail as possible.
+        
+  - type: checkboxes
+    id: checklist
+    attributes:
+      label: Pre-Flight Checklist
+      description: Please confirm the following before submitting
+      options:
+        - label: I have searched existing issues to ensure this feature hasn't been requested
+          required: true
+        - label: This feature aligns with SyncBoost's goal of server performance optimization
+          required: true
+
+  - type: textarea
+    id: problem
+    attributes:
+      label: Problem / Use Case
+      description: What problem does this feature solve? Why do you need this?
+      placeholder: |
+        Describe the problem or limitation you're facing.
+        Example: "As a server admin with 100+ players, I need..."
+    validations:
+      required: true
+
+  - type: textarea
+    id: solution
+    attributes:
+      label: Proposed Solution
+      description: How would you like to see this implemented?
+      placeholder: |
+        Describe your ideal solution in detail.
+        - What should happen?
+        - How should it work?
+        - Are there any commands or configurations needed?
+    validations:
+      required: true
+
+  - type: textarea
+    id: alternatives
+    attributes:
+      label: Alternatives Considered
+      description: Have you considered any alternative solutions or workarounds?
+      placeholder: |
+        - Alternative approach 1
+        - Alternative approach 2
+        - Current workaround (if any)
+
+  - type: dropdown
+    id: module
+    attributes:
+      label: Related Module
+      description: Which SyncBoost module would this feature relate to?
+      options:
+        - Core Plugin
+        - MobAiReducer
+        - EntityLimiter
+        - LagShield
+        - ExplosionOptimizer
+        - ItemsCleaner
+        - RedstoneLimiter
+        - VehicleMotionReducer
+        - AbilityLimiter
+        - ConsoleFilter
+        - New Module
+        - Other / Not Sure
+
+  - type: dropdown
+    id: priority
+    attributes:
+      label: Priority Level
+      description: How important is this feature to you?
+      options:
+        - "Low - Nice to have"
+        - "Medium - Would improve experience"
+        - "High - Critical for my use case"
+    validations:
+      required: true
+
+  - type: textarea
+    id: benefits
+    attributes:
+      label: Benefits
+      description: How would this feature benefit SyncBoost users?
+      placeholder: |
+        - Benefit 1: ...
+        - Benefit 2: ...
+        - Expected performance impact: ...
+
+  - type: textarea
+    id: examples
+    attributes:
+      label: Examples / References
+      description: Are there similar features in other plugins or implementations you can reference?
+      placeholder: |
+        Links to similar features, mockups, or examples
+
+  - type: textarea
+    id: additional
+    attributes:
+      label: Additional Context
+      description: Any other information, mockups, or context about the feature
