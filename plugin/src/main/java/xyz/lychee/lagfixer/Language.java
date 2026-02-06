@@ -45,7 +45,24 @@ public class Language {
     }
 
     public static Component createComponent(String message, boolean prefix, TagResolver.Single... placeholders) {
-        Component component = MiniMessage.miniMessage().deserialize(message, placeholders);
+        // Create a custom tag resolver for <prefix> placeholder
+        TagResolver.Builder resolverBuilder = TagResolver.builder();
+        
+        // Add the prefix tag resolver
+        resolverBuilder.resolver(TagResolver.resolver("prefix", (args, ctx) -> {
+            ConfigManager configManager = ConfigManager.getInstance();
+            if (configManager != null && configManager.getPrefix() != null) {
+                return net.kyori.adventure.text.minimessage.tag.Tag.inserting(configManager.getPrefix());
+            }
+            return net.kyori.adventure.text.minimessage.tag.Tag.inserting(Component.empty());
+        }));
+        
+        // Add all custom placeholders
+        for (TagResolver.Single placeholder : placeholders) {
+            resolverBuilder.resolver(placeholder);
+        }
+        
+        Component component = MiniMessage.miniMessage().deserialize(message, resolverBuilder.build());
         return prefix ? Component.empty().append(ConfigManager.getInstance().getPrefix()).append(component) : component;
     }
 

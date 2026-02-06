@@ -1,3 +1,69 @@
+## 1.2.3 - Customizable Messages & PlaceholderAPI Enhancement
+
+### ✨ New Features
+
+#### 🎨 Customizable Message Prefix
+- **NEW**: All message prefixes are now fully customizable
+- Use `<prefix>` placeholder in `lang.yml` to reference the configured prefix from `config.yml`
+- Change prefix once in `main.prefix` config and all messages update automatically
+- Example: `"<prefix><dark_gray>» <gray>Your message here"`
+
+#### 📊 Enhanced PlaceholderAPI Support
+- **NEW**: Expanded from 6 to 40+ placeholders
+- Changed identifier from `lagfixer` to `syncboost`
+
+##### Performance Metrics
+| Placeholder | Description |
+|-------------|-------------|
+| `%syncboost_tps%` | TPS formatted (19.95) |
+| `%syncboost_tps_color%` | TPS with color coding |
+| `%syncboost_mspt%` | MSPT formatted |
+| `%syncboost_mspt_color%` | MSPT with color coding |
+| `%syncboost_cpu%` | CPU process usage |
+| `%syncboost_cpusystem%` | CPU system usage |
+
+##### Entity Counts
+| Placeholder | Description |
+|-------------|-------------|
+| `%syncboost_entities%` | Total entities |
+| `%syncboost_mobs%` | Total mobs |
+| `%syncboost_items%` | Ground items |
+| `%syncboost_projectiles%` | Projectiles |
+| `%syncboost_vehicles%` | Vehicles |
+
+##### Memory Stats
+| Placeholder | Description |
+|-------------|-------------|
+| `%syncboost_memory_used%` | RAM used (2048MB) |
+| `%syncboost_memory_max%` | RAM max (4096MB) |
+| `%syncboost_memory_percent%` | RAM percentage |
+| `%syncboost_memory_bar%` | Visual RAM bar |
+| `%syncboost_memory_used_gb%` | RAM in GB |
+
+##### Server Stats
+| Placeholder | Description |
+|-------------|-------------|
+| `%syncboost_players%` | Online players |
+| `%syncboost_worlds%` | World count |
+| `%syncboost_chunks%` | Loaded chunks |
+| `%syncboost_uptime%` | Server uptime (HH:MM:SS) |
+
+##### Clearlag Timer
+| Placeholder | Description |
+|-------------|-------------|
+| `%syncboost_clearlag_timer%` | Timer with suffix (45s) |
+| `%syncboost_clearlag_formatted%` | Timer MM:SS format |
+| `%syncboost_clearlag_progress%` | Progress percentage |
+| `%syncboost_clearlag_bar%` | Visual progress bar |
+
+### 📝 Technical Changes
+- Updated `Language.java` with custom `<prefix>` tag resolver
+- Updated `PlaceholderAPIHook.java` with expanded placeholders
+- Updated all messages in `lang.yml` to use `<prefix>` placeholder
+- Added documentation for prefix placeholder usage in `lang.yml`
+
+---
+
 ## 1.2.2 - Resource Health, Chunk Analyzer & Memory Diagnostics Update
 
 ### ✨ New Features
